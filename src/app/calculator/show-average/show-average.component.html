@@ -1,0 +1,29 @@
+<h4>Get Numbers Average</h4>
+      <form [formGroup]="numberList" (ngSubmit)="onSubmit()">
+              
+        <div formArrayName="numbers">
+  
+          <button
+            class="btn btn-default btn-add btn-secondary"
+            type="button"
+            (click)=" onAddNumber()">Add Numbers</button>
+          <div
+            class="form-group"
+            *ngFor="let numbersControl of numberList.get('numbers').controls; let i = index"
+            >
+            <input required type="number" class="form-control" [formControlName]="i">
+            <div
+            *ngIf="numberList.controls.numbers.controls[i].invalid && numberList.controls.numbers.controls[i].touched"
+            class="aler alert-danger">Please enter valid data!</div>
+
+          </div>
+        </div>
+        
+        <div class="result">
+        <button class="btn btn-primary" type="submit">Get Average</button>
+        <p *ngIf="average">{{average | average}}</p>
+
+        </div>
+
+
+      </form>

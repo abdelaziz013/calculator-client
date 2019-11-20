@@ -1,0 +1,40 @@
+<h4>Add Two Numbers</h4>
+
+<form #f="ngForm" (ngSubmit)="add(f)">
+  <label for="first">Enter First Number : </label>
+  <input
+    ngModel
+    name="firstNum"
+    id="first"
+    type="number"
+    required
+    #firstNum="ngModel"
+    class="form-control"
+  />
+  <div class="aler alert-danger" *ngIf="firstNum?.touched && firstNum?.invalid">
+    <p>Please enter first Number</p>
+  </div>
+
+  <label for="title">Enter Second Number : </label>
+  <input
+    ngModel
+    name="secondNumber"
+    id="title"
+    type="text"
+    required
+    #secondNumber="ngModel"
+    class="form-control"
+  />
+  <div
+    class="aler alert-danger"
+    *ngIf="secondNumber?.touched && secondNumber?.invalid"
+  >
+    <p>Please enter Second Number</p>
+  </div>
+  <div class="result">
+    <button class="btn btn-primary " type="submit">Get Total</button>
+    <p *ngIf="result">{{ result | total }}</p>
+  </div>
+</form>
+
+<hr />
