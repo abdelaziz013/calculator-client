@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormControl, FormBuilder } from '@angular/forms';
 import { CalculatorService } from '../calculator.service';
-import { Average } from '../average';
+
 
 @Component({
   selector: 'app-show-average',
@@ -10,7 +10,8 @@ import { Average } from '../average';
 })
 export class ShowAverageComponent implements OnInit {
 
-  average: Average;
+
+  average
   numberList: FormGroup
 
   constructor(private fb: FormBuilder,

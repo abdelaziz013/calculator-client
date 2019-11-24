@@ -1,6 +1,6 @@
 <h4>Add Two Numbers</h4>
 
-<form #f="ngForm" (ngSubmit)="add(f)">
+<form #addForm="ngForm" (ngSubmit)="add(addForm)">
   <label for="first">Enter First Number : </label>
   <input
     ngModel
@@ -33,7 +33,7 @@
   </div>
   <div class="result">
     <button class="btn btn-primary " type="submit">Get Total</button>
-    <p *ngIf="result">{{ result | total }}</p>
+    <p *ngIf="addResult">{{ addResult | total }}</p>
   </div>
 </form>
 

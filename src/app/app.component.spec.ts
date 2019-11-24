@@ -1,16 +1,40 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { ShowAverageComponent } from './calculator/show-average/show-average.component';
+import { ShowTotalComponent } from './calculator/show-total/show-total.component';
+
+// my import
+import { BrowserModule } from '@angular/platform-browser';
+
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TotalPipe } from './pipe/total.pipe';
+import { AveragePipe } from './pipe/average.pipe'
+
+
+
+// my import
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        BrowserModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
+
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        ShowAverageComponent,
+        ShowTotalComponent,
+        TotalPipe,
+        AveragePipe
       ],
+
     }).compileComponents();
   }));
 
@@ -26,10 +50,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('Calculator-Client');
   });
 
-  it('should render title in a h1 tag', () => {
+  it('should render Chripment - Software Engineering Coding Challenge in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to Calculator-Client!');
+    expect(compiled.querySelector('h3').textContent).toContain('Chripment - Software Engineering Coding Challenge');
   });
 });

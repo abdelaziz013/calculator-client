@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { CalculatorService } from '../calculator.service';
-import { Sum } from '../sum';
+
 
 @Component({
   selector: 'app-show-total',
@@ -9,26 +9,28 @@ import { Sum } from '../sum';
   styleUrls: ['./show-total.component.css']
 })
 export class ShowTotalComponent implements OnInit {
-  result:Sum
 
-  constructor(private calcService:CalculatorService) { }
+  addResult
+  @ViewChild('addForm') addForm: NgForm;
+
+  constructor(private calcService: CalculatorService) { }
 
   ngOnInit() {
   }
 
 
-  add(f:NgForm){
-    if (f.invalid) {
+  add(addForm: NgForm) {
+    if (addForm.invalid) {
       return;
     }
 
-    const firstNumber =f.value.firstNum;
-    const secondNumber =f.value.secondNumber;
-    this.calcService.getSum(firstNumber,secondNumber).subscribe(response=>{
-      this.result =response.total
-    })   
+    const firstNumber = addForm.value.firstNum;
+    const secondNumber = addForm.value.secondNumber;
+    this.calcService.getSum(firstNumber, secondNumber).subscribe(response => {
+      this.addResult = response.total
+    })
 
-    f.resetForm()
-    
+    addForm.resetForm()
+
   }
 }
