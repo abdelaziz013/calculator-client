@@ -3,10 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { ShowAverageComponent } from './calculator/show-average/show-average.component';
 import { ShowTotalComponent } from './calculator/show-total/show-total.component';
-
-// my import
 import { BrowserModule } from '@angular/platform-browser';
-
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TotalPipe } from './pipe/total.pipe';
@@ -14,7 +11,7 @@ import { AveragePipe } from './pipe/average.pipe'
 
 
 
-// my import
+
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
