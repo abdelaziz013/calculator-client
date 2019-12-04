@@ -5,38 +5,38 @@ import { CalculatorService } from './calculator.service';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CalculatorService', () => {
+  let httpMock: HttpTestingController
+  let service: CalculatorService
+ 
 
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule
+      ],
+      providers: [CalculatorService]
+    });
+    
+    service = TestBed.get(CalculatorService)
+    httpMock = TestBed.get(HttpTestingController);   
+  })
 
-
-
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [
-
-      HttpClientTestingModule
-    ],
-    providers: [CalculatorService]
-  }),
-
-
-
-  )
-
+  afterEach(() => {
+    // After every test, assert that there are no more pending requests.
+    httpMock.verify();
+  });
 
 
 
   it('should be created', () => {
-    const service: CalculatorService = TestBed.get(CalculatorService);
     expect(service).toBeTruthy();
   });
 
 
   it('should get sum of two numbers from API using get method', () => {
-    const service: CalculatorService = TestBed.get(CalculatorService);
-    const httpMock: HttpTestingController = TestBed.get(HttpTestingController);
     service.getSum(6, 7).subscribe(response => {
       expect(response.total).toBe(13);
     })
-
     const req = httpMock.expectOne(`http://localhost:8080/api/get-sum?firstNum=6&secondNum=7`);
     expect(req.request.method).toBe('GET');
 
@@ -44,15 +44,11 @@ describe('CalculatorService', () => {
       total: 13
     });
 
-    httpMock.verify();
-
   });
 
 
   it('should get average of list of numbers from API using post method', () => {
-    const service: CalculatorService = TestBed.get(CalculatorService);
-    const httpMock: HttpTestingController = TestBed.get(HttpTestingController);
-    service.getAverage([1, 2,3]).subscribe(response => {
+    service.getAverage([1, 2, 3]).subscribe(response => {
       expect(response.average).toBe(2);
     })
 
@@ -63,12 +59,6 @@ describe('CalculatorService', () => {
       average: 2
     });
 
-    httpMock.verify();
-
   });
-
-
-
-
 
 });

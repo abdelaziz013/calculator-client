@@ -1,3 +1,3 @@
 export interface Average {
-    average:number;
+    average:Number;
 }

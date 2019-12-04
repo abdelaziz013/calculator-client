@@ -20,7 +20,7 @@
     ngModel
     name="secondNumber"
     id="title"
-    type="text"
+    type="number"  
     required
     #secondNumber="ngModel"
     class="form-control"
@@ -32,7 +32,7 @@
     <p>Please enter Second Number</p>
   </div>
   <div class="result">
-    <button class="btn btn-primary " type="submit">Get Total</button>
+    <button class="btn btn-primary "[disabled]="!addForm.valid" type="submit">Get Total</button>
     <p *ngIf="addResult">{{ addResult | total }}</p>
   </div>
 </form>

@@ -35,7 +35,6 @@ describe('ShowAverageComponent', () => {
 
   it('control should not empty', () => {
     let control = component.numberList.get('numbers')  
-
     control.setValue([''])
     expect(control.valid).toBeFalsy();
   });

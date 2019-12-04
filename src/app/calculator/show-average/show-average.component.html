@@ -9,7 +9,7 @@
             (click)=" onAddNumber()">Add Numbers</button>
           <div
             class="form-group"
-            *ngFor="let numbersControl of numberList.get('numbers').controls; let i = index"
+             *ngFor="let numbersControl of numbers.controls; let i = index" 
             >
             <input required type="number" class="form-control" [formControlName]="i">
             <div
