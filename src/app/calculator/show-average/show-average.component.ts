@@ -43,7 +43,7 @@ export class ShowAverageComponent implements OnInit {
   }
 
   removeFormRows() {
-    (<FormArray>this.numberList.controls.numbers).controls.splice(0, (<FormArray>this.numberList.controls.numbers).controls.length)
+    (<FormArray>this.numberList.controls.numbers).controls.splice(0, (<FormArray>this.numberList.controls.numbers).controls.length) 
     this.numbers.push(this.fb.control(''))
   }
 
@@ -58,6 +58,7 @@ export class ShowAverageComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        
         const numbersList = this.numberList.value.numbers
         this.calcService.getAverage(numbersList).subscribe(response => {
           this.average = response.average
