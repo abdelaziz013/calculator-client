@@ -23,7 +23,7 @@ export class CalculatorService {
 
   // get average
   getAverage(listNumber: number[]) {
-    return this.http.post<{ average}>(BACKEND_URL + '/api/post-average', listNumber);
+    return this.http.post<{ average}>(BACKEND_URL + '/api/post-average', listNumber)
   }
 
 }
